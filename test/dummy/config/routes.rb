@@ -1,4 +1,5 @@
-Rails.application.routes.draw do
+require 'resque/server'
 
-  mount QueuedMail::Engine => "/queued_mail"
+Rails.application.routes.draw do
+  mount Resque::Server.new, :at => "/"
 end
