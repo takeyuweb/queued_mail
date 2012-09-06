@@ -4,12 +4,15 @@ module QueuedMail
     layout nil
 
     def original_email(message)
-      mail(:from => message.formatted_sender,
-           :to => message.formatted_recipient,
-           :reply_to => message.formatted_reply_to,
-           :subject => message.subject) do |format|
-        format.text { render :text => message.body }
-      end
+      mail = mail(:from => message.formatted_sender,
+                  :to => message.formatted_recipient,
+                  :reply_to => message.formatted_reply_to,
+                  :subject => message.subject,
+                  :content_type => message.content_type,
+                  :mime_version => message.mime_version,
+                  :content_transfer_encoding => message.content_transfer_encoding)
+      
+      mail.body = message.body
     end
   end
 end

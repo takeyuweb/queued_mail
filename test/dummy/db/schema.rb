@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120906054157) do
+ActiveRecord::Schema.define(:version => 20120906073754) do
 
   create_table "queued_mail_messages", :force => true do |t|
     t.string   "subject"
@@ -22,8 +22,11 @@ ActiveRecord::Schema.define(:version => 20120906054157) do
     t.string   "sender_name"
     t.string   "reply_to_address"
     t.string   "reply_to_name"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.string   "content_type"
+    t.string   "mime_version"
+    t.string   "content_transfer_encoding"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
 end
