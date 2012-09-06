@@ -1,6 +1,33 @@
 = QueuedMail
 
-ActionMailerによるメール送信を簡単に非同期化。キュー管理にはResqueを使います。
+== 何が嬉しいの？
+
+時間のかかるメール送信処理をバックグラウンドで処理することで、ユーザーに素早いレスポンスを返すことができます。
+
+ActionMailer::Base#deliverでを実際のメール送信ではなくジョブキューへの登録を行うようになります。
+特徴はActionMailerの設定を変更するだけよく、アプリケーションコードへの変更が不要なことです。
+このため、とても簡単に導入することができます。
+
+ジョブキューの実装は完全にResqueにおんぶにだっこです。（なので下手な実装よりも信頼性はあるでしょう）
+
+== 環境
+
+- Ruby on Rails 3.2.8
+
+- Resque 1.22.0
+
+これより古い環境は今のところ試してないのでわかりません。
+
+
+== インストール
+
+Resqueの導入 https://github.com/defunkt/resque
+
+Gemfile
+
+    gem 'queued_mail', git: 'git://github.com/uzuki05/queued_mail.git'
+
+    bundle install
 
 マイグレーション。
 
@@ -31,13 +58,22 @@ ActionMailerによるメール送信を簡単に非同期化。キュー管理�
     QUEUE=mail_queue rake environment resque:work
 
 
-参考 というかほぼそのまま
-こういうのを作りたいなと思ったらもうあったので
+== TODO
+
+- Workerとかめんどくさい人用 cronで叩けるコントローラ
+
+- テスト
+
+== 元ネタ
+
+こういうのを作りたいなと思ったらもうあったので参考にさせて戴きました。（というか仕組み的にはこのまんまです）
 
 Customizing ActionMailer delivery methods
 https://gist.github.com/1176236
 
 ライセンスは大丈夫だろうか・・・
 
+
+== ライセンス
 
 This project rocks and uses MIT-LICENSE.
