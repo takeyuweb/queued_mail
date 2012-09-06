@@ -7,9 +7,9 @@ require "queued_mail/version"
 Gem::Specification.new do |s|
   s.name        = "queued_mail"
   s.version     = QueuedMail::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
+  s.authors     = ["Yuichi Takeuchi"]
+  s.email       = ["uzuki05@takeyu-web.com"]
+  s.homepage    = "http://takeyu-web.com/"
   s.summary     = "TODO: Summary of QueuedMail."
   s.description = "TODO: Description of QueuedMail."
 

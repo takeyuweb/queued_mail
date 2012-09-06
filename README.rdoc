@@ -1,3 +1,43 @@
 = QueuedMail
 
+ActionMailerによるメール送信を簡単に非同期化。キュー管理にはResqueを使います。
+
+マイグレーション。
+
+    rake queued_mail:install:migrations
+    rake db:migrate
+
+設定変更。
+
+    # in config/environments/production.rb (or other environment)
+
+    # config.action_mailer.delivery_method = :smtp
+    config.action_mailer.delivery_method = :queued 
+    config.mail_queue_outbound_delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address => "smtp.sendgrid.net",
+      :port => 25,
+      :domain => "site.com",
+      :user_name => "sendgrid@site.com",
+      :password => "smtp-password"
+    }
+
+ワーカー起動
+
+    rake environment queued_mail:work
+
+または
+
+    QUEUE=mail_queue rake environment resque:work
+
+
+参考 というかほぼそのまま
+こういうのを作りたいなと思ったらもうあったので
+
+Customizing ActionMailer delivery methods
+https://gist.github.com/1176236
+
+ライセンスは大丈夫だろうか・・・
+
+
 This project rocks and uses MIT-LICENSE.
