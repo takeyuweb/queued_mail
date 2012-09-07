@@ -56,7 +56,9 @@ module Dummy
     config.assets.version = '1.0'
 
     config.action_mailer.delivery_method = :queued
-    config.mail_queue_outbound_delivery_method = :test
+    #config.mail_queue_service = :resque
+    #config.mail_queue_name = :mail_queue
+    #config.mail_queue_outbound_delivery_method = :sendmail
   end
 end
 

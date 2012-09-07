@@ -1,6 +1,6 @@
 module QueuedMail
   class DeliverEmailJob
-    @queue = :mail_queue
+    @queue = Rails.application.config.mail_queue_name.to_sym
     
     def self.perform(args)
       message = QueuedMail::Message.find(args["message_id"])

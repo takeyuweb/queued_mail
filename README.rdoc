@@ -12,6 +12,8 @@ ActionMailer::Base#deliverでを実際のメール送信ではなくジョブキ
 
 == 環境
 
+- Ruby 1.9.3
+
 - Ruby on Rails 3.2.8
 
 - Resque 1.22.0
@@ -39,14 +41,16 @@ Gemfile
     # in config/environments/production.rb (or other environment)
 
     # config.action_mailer.delivery_method = :smtp
-    config.action_mailer.delivery_method = :queued 
+    config.action_mailer.delivery_method = :queued
+    config.mail_queue_service = :resque # or :amazon_sqs
+    config.mail_queue_name = :mail_queue
     config.mail_queue_outbound_delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :address => "smtp.sendgrid.net",
-      :port => 25,
-      :domain => "site.com",
-      :user_name => "sendgrid@site.com",
-      :password => "smtp-password"
+      address: "smtp.sendgrid.net",
+      port: 25,
+      domain: "site.com",
+      user_name: "sendgrid@site.com",
+      password: "smtp-password"
     }
 
 ワーカー起動

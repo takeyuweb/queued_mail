@@ -2,7 +2,8 @@ require 'resque'
 
 module QueuedMail
   class DeliveryMethod
-    def initialize(*args)
+    def initialize(options)
+      @options = options
     end
 
     def deliver!(mail)
