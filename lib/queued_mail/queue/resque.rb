@@ -1,10 +1,9 @@
 module QueuedMail
   module Queue
     module Resque
-      autoload :DeliverEmailJob, 'queued_mail/queue/resque/deliver_email_job'
       module ModuleMethods
         def enqueue(message_id)
-          ::Resque.enqueue(QueuedMail::Queue::Resque::DeliverEmailJob, message_id: message_id)
+          ::Resque.enqueue(QueuedMail::Job, message_id: message_id)
         end
         
         def dequeue

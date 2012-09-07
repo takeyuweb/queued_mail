@@ -22,15 +22,8 @@ module QueuedMail
 
     private
     def enqueue(message_id)
-      service = Rails.application.config.mail_queue_service.to_sym
-      case service
-      when :resque
-        QueuedMail::Queue::Resque.enqueue(message_id)
-      when :amazon_sqs
-        raise "TODO"
-      else
-        raise "unknown queue service(#{service})"
-      end
+      service = instance_eval("QueuedMail::Queue::#{ Rails.application.config.mail_queue_service.to_s.camelcase }")
+      service.enqueue(message_id)
     end
   end
 end

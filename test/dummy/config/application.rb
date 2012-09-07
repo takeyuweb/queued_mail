@@ -57,7 +57,7 @@ module Dummy
 
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.delivery_method = :queued
-    #config.mail_queue_service = :amazon_sqs # default resque
+    config.mail_queue_service = :amazon_sqs # default resque
     config.mail_queue_name = 'queued_mail-dummy'.to_sym
     #config.mail_queue_outbound_delivery_method = :sendmail
   end
