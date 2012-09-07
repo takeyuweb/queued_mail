@@ -55,9 +55,10 @@ module Dummy
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    config.action_mailer.raise_delivery_errors = true
     config.action_mailer.delivery_method = :queued
-    #config.mail_queue_service = :resque
-    #config.mail_queue_name = :mail_queue
+    #config.mail_queue_service = :amazon_sqs # default resque
+    config.mail_queue_name = 'queued_mail-dummy'.to_sym
     #config.mail_queue_outbound_delivery_method = :sendmail
   end
 end

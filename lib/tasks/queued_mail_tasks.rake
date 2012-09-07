@@ -6,8 +6,6 @@
 namespace :queued_mail do
   desc "QueuedMail delivery task"
   task :work do
-    require 'resque/tasks'
-    ENV['QUEUES'] = Rails.application.config.mail_queue_name.to_s
-    Rake::Task['resque:work'].invoke
+    instance_eval "QueuedMail::Queue::#{ Rails.application.config.mail_queue_service.to_s.camelcase }.task"
   end
 end

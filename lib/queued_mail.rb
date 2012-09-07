@@ -3,6 +3,10 @@ require "queued_mail/engine"
 module QueuedMail
   autoload :DeliveryMethod,  'queued_mail/delivery_method'
   autoload :Mailer,          'queued_mail/mailer'
-  autoload :DeliverEmailJob, 'queued_mail/deliver_email_job'
+
+  module Queue
+    autoload :Resque,        'queued_mail/queue/resque'
+    autoload :AmazonSqs,     'queued_mail/queue/amazon_sqs'
+  end
 end
 

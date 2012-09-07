@@ -1,5 +1,3 @@
-require 'resque'
-
 module QueuedMail
   class DeliveryMethod
     def initialize(options)
@@ -19,7 +17,20 @@ module QueuedMail
                                         :mime_version      => mail.mime_version,
                                         :content_transfer_encoding => mail.content_transfer_encoding)
       message.save
-      Resque.enqueue(QueuedMail::DeliverEmailJob, :message_id => message.id)
+      enqueue(message.id)
+    end
+
+    private
+    def enqueue(message_id)
+      service = Rails.application.config.mail_queue_service.to_sym
+      case service
+      when :resque
+        QueuedMail::Queue::Resque.enqueue(message_id)
+      when :amazon_sqs
+        raise "TODO"
+      else
+        raise "unknown queue service(#{service})"
+      end
     end
   end
 end
