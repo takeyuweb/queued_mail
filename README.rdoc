@@ -1,9 +1,9 @@
 = QueuedMail
 
-- Author:: Yuichi Takeuchi <uzuki05@takeyu-web.com>
-- Website:: http://takeyu-web.com/
-- Copyright:: Copyright 2012 Yuichi Takeuchi
-- License:: MIT-LICENSE.
+Author:: Yuichi Takeuchi uzuki05@takeyu-web.com
+Website:: http://takeyu-web.com/
+Copyright:: Copyright 2012 Yuichi Takeuchi
+License:: MIT-LICENSE.
 
 
 == 何が嬉しいの？
@@ -14,7 +14,7 @@ ActionMailer::Base#deliverでを実際のメール送信ではなくジョブキ
 特徴はActionMailerの設定を変更するだけよく、アプリケーションコードへの変更が不要なことです。
 このため、とても簡単に導入することができます。
 
-ジョブキューには、以下のうち好きなものを使用できます。
+なおジョブキューは、選べる2タイプ。
 
 - Amazon SQS （要 aws-sdk gem）
 - Resque (要 resque gem & Redis)
@@ -76,7 +76,9 @@ Gemfile
 === Resqueを使う（デフォルト）
 
 (1) Redisサーバーを準備する
+
 (2) Railsでresqueを使用する設定を行う
+
 (3) config/application.rb等でキューとしてResqueを使うことを設定する（省略可能）
       config.mail_queue_service = :resque
 
@@ -84,9 +86,9 @@ Gemfile
 === Amazon SQSを使う
 
 (1) AWS ManagementConsoleなどでキューを作成
-(2) Railsでaws-sdkを使用する設定を行う
-    * config/aws.yml など
-    * sqs_endpoint も設定する
+
+(2) Railsでaws-sdkを使用する設定を行う（config/aws.yml など。必要に応じてsqs_endpoint も設定する。）
+
 (3) config/application.rb等でキューとしてAmazonSQSを使うことを設定する
       config.mail_queue_service = :amazon_sqs
       config.mail_queue_name = '1で作成したキューの名前'
