@@ -10,5 +10,6 @@ module QueuedMail
     config.mail_queue_service = :resque
     config.mail_queue_name = :mail_queue
     config.mail_queue_outbound_delivery_method = :sendmail
+    config.mail_queue_outbound_mailer = 'QueuedMail::Mailer'
   end
 end

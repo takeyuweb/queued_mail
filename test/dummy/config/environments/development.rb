@@ -36,5 +36,9 @@ Dummy::Application.configure do
   config.assets.debug = true
 
   #config.action_mailer.delivery_method = :sendmail
-  config.mail_queue_outbound_delivery_method = :sendmail
+  config.mail_queue_outbound_delivery_method = :smtp
+  if FileTest.file?("#{Rails.root.to_s}/config/smtp_settings.yml")
+    smtp_settings = YAML::load(File.open("#{Rails.root.to_s}/config/smtp_settings.yml"))
+    ActionMailer::Base.smtp_settings = smtp_settings[Rails.env] unless smtp_settings[Rails.env].nil?
+  end
 end
