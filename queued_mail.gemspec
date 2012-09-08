@@ -10,13 +10,13 @@ Gem::Specification.new do |s|
   s.authors     = ["Yuichi Takeuchi"]
   s.email       = ["uzuki05@takeyu-web.com"]
   s.homepage    = "http://takeyu-web.com/"
-  s.summary     = "TODO: Summary of QueuedMail."
-  s.description = "TODO: Description of QueuedMail."
+  s.summary     = "Summary of QueuedMail."
+  s.description = "Description of QueuedMail."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.8"
+  s.add_dependency "rails", "~> 3.2.0"
 
   s.add_development_dependency "sqlite3"
 end
