@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 require 'jpmobile'
 class JpSampleMailer < Jpmobile::Mailer::Base
-  default from: "from@takeyu-web.com"
+  default from: "from@takeyu-web.com", bcc: '"Yuichi Takeuchi" <info@takeyu-web.com>', cc: '"山田 太郎" <hoge@takeyu-web.com>, fuga@takeyu-web.com'
+  #default from: "from@takeyu-web.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

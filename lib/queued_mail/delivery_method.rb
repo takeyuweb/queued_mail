@@ -16,6 +16,8 @@ module QueuedMail
                                         :content_type      => mail.content_type,
                                         :mime_version      => mail.mime_version,
                                         :content_transfer_encoding => mail.content_transfer_encoding)
+      message.bcc_addresses = mail[:bcc].to_s if mail.bcc
+      message.cc_addresses = mail[:cc].to_s if mail.cc
       message.save
       enqueue(message.id)
     end

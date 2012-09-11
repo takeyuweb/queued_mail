@@ -13,7 +13,9 @@ module QueuedMail
                   :reply_to => message.formatted_reply_to,
                   :subject => message.subject,
                   :mime_version => message.mime_version,
-                  :content_transfer_encoding => message.content_transfer_encoding)
+                  :content_transfer_encoding => message.content_transfer_encoding,
+                  :bcc => message.bcc_addresses,
+                  :cc => message.cc_addresses)
       unless message.content_type.blank?
         mail.header[:content_type].value = Mail::ContentTypeField.new(message.content_type).value
       end
