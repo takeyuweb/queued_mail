@@ -31,7 +31,7 @@ ActionMailer::Base#deliverでを実際のメール送信ではなくジョブキ
 
 Gemfile
 
-    gem 'queued_mail', '= 0.1.1'
+    gem 'queued_mail', '= 0.1.3'
 
     bundle install
 

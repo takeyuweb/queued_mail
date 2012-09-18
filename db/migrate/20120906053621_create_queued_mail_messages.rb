@@ -2,7 +2,7 @@ class CreateQueuedMailMessages < ActiveRecord::Migration
   def change
     create_table :queued_mail_messages do |t|
       t.string :subject
-      t.binary :body
+      t.binary :body, limit: 30.megabyte
       t.string :recipient_address
       t.string :recipient_name
       t.string :sender_address

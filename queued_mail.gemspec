@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = QueuedMail::VERSION
   s.authors     = ["Yuichi Takeuchi"]
   s.email       = ["uzuki05@takeyu-web.com"]
-  s.homepage    = "http://takeyu-web.com/"
+  s.homepage    = "https://github.com/uzuki05/queued_mail"
   s.summary     = "Summary of QueuedMail."
   s.description = "Description of QueuedMail."
 
