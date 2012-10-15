@@ -19,3 +19,13 @@ two:
   sender_name: MyString
   reply_to_address: MyString
   reply_to_name: MyString
+
+rfc_violation1:
+  subject: "@直前にドット"
+  body: ""
+  recipient_address: "to.@takeyu-web.com"
+  recipient_name: "Recipient"
+  recipient_address: "from.@takeyu-web.com"
+  recipient_name: "Sendor"
+  reply_to_address: "reply.@takeyu-web.com"
+  reply_to_name: "ReplyTo"

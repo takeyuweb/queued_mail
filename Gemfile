@@ -11,5 +11,5 @@ group :test, :development do
   gem "resque"
   gem "aws-sdk"
   gem 'sqlite3'
-  gem 'jpmobile'
+  gem "jpmobile"
 end

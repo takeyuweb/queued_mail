@@ -8,7 +8,12 @@ module QueuedMail
       class_eval %Q{
         def formatted_#{key}
           address = Mail::Address.new
-          address.address = #{key}_address
+          begin
+            address.address = #{key}_address
+          rescue Mail::Field::ParseError
+            parts = #{key}_address.scan(/\\A(.+)@(.+)\\z/).flatten              
+            address.address = '"' + parts[0] + '"' + '@' + parts[1]
+          end
           address.display_name = #{key}_name
           address.to_s
         end
