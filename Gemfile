@@ -12,4 +12,6 @@ group :test, :development do
   gem "aws-sdk"
   gem 'sqlite3'
   gem "jpmobile"
+  gem 'rspec-rails'
+  gem 'rspec-mocks'
 end

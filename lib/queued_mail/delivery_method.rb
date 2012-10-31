@@ -6,7 +6,12 @@ module QueuedMail
 
     def deliver!(mail)
       message = QueuedMail::Message.new(:source => mail.to_s)
-      message.bcc_addresses = mail[:bcc].to_s if mail.bcc
+      
+      addresses = mail.bcc
+      if addresses
+        message.bcc_addresses = addresses.map{|address| address.to_s.scan(/^.*?([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+?)(?![a-zA-Z0-9._-]).*$/).flatten.first }.uniq.compact.join(', ')
+      end
+        
       message.save
       enqueue(message.id)
     end

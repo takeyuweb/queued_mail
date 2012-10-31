@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031064756) do
+ActiveRecord::Schema.define(:version => 20121031094220) do
 
   create_table "queued_mail_messages", :force => true do |t|
     t.binary   "source",        :limit => 31457280
-    t.binary   "bcc_addresses"
+    t.string   "bcc_addresses"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
   end
