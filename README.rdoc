@@ -23,8 +23,7 @@ ActionMailer::Base#deliverでを実際のメール送信ではなくジョブキ
 
 - Ruby 1.9.3
 - Ruby on Rails 3.2.8
-
-これより古い環境は今のところ試してないのでわかりません。
+- mail 2.4.4
 
 
 == インストール
@@ -101,12 +100,11 @@ Gemfile
 - テスト
 
 
-== 元ネタ
+== 0.1系からのアップグレード
 
-こういうのを作りたいなと思ったらもうあったので参考にさせて戴きました。
+queued_mail_messagesテーブルの構造が変わってます。
 
-Customizing ActionMailer delivery methods
-https://gist.github.com/1176236
+rake queued_mail:install:migrations でマイグレーションファイルをコピーして開き、便宜移行コードに変更してください。
 
 
 == 注意
