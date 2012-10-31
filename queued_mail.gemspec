@@ -19,3 +19,4 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.0"
   s.add_dependency "mail", "~> 2.4.4"
 end
+
