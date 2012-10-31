@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031061946) do
+ActiveRecord::Schema.define(:version => 20121031064756) do
 
   create_table "queued_mail_messages", :force => true do |t|
     t.binary   "source",        :limit => 31457280
