@@ -31,4 +31,8 @@ describe QueuedMail::Mailer do
     end
   end
 
+  it 'subject' do
+    QueuedMail::Mailer.original_email(message).subject.should == 'Simple test'
+  end
+
 end

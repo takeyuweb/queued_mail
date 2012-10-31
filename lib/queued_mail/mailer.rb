@@ -5,7 +5,9 @@ module QueuedMail
 
     class << self
       def original_email(message)
-        new(nil, :raw_source => message.source, :bcc => message.bcc_addresses).message
+        m = new(nil, :raw_source => message.source)
+        m.message.bcc = message.bcc_addresses
+        m.message
       end
     end
 
@@ -17,15 +19,11 @@ module QueuedMail
           
           if raw_source
             @_message = Mail.new(raw_source)
-            process(:original_email, *args)
+            wrap_delivery_behavior!
           end
         end
       end
     end
     
-    def original_email(options)
-      mail(options)
-    end
-
   end
 end
