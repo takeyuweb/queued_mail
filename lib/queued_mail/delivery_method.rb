@@ -9,7 +9,7 @@ module QueuedMail
       
       addresses = mail.bcc
       if addresses
-        message.bcc_addresses = addresses.map{|address| address.to_s.scan(/^.*?([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+?)(?![a-zA-Z0-9._-]).*$/).flatten.first }.uniq.compact.join(', ')
+        message.bcc_addresses = addresses.map{|address| address.to_s.scan(/^.*?([a-zA-Z0-9._+-]+@[a-zA-Z0-9._-]+?)(?![a-zA-Z0-9._-]).*$/).flatten.first }.uniq.compact.join(', ')
       end
         
       message.save
