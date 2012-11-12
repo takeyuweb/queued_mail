@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    queued_mail (0.2.4)
+    queued_mail (0.2.5)
       mail (~> 2.4.4)
       rails (~> 3.2.0)
 

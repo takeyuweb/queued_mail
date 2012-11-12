@@ -15,7 +15,7 @@ module QueuedMail
           raise "TODO"
         end
         
-        def task(do_retry = true)
+        def task
           if ENV['PIDFILE']
             File.open(ENV['PIDFILE'], 'w'){ |f| f << Process.pid }
           end
