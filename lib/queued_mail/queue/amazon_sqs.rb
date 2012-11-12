@@ -15,7 +15,7 @@ module QueuedMail
           raise "TODO"
         end
         
-        def task
+        def task(do_retry = true)
           if ENV['PIDFILE']
             File.open(ENV['PIDFILE'], 'w'){ |f| f << Process.pid }
           end
@@ -34,8 +34,8 @@ module QueuedMail
           rescue SignalException
             # C-c
           rescue Exception => e
-            Rails.logger.error e
-            retry
+            Rails.logger.error "#{e.message}\n\n#{e.backtrace.join("\n")}"
+            raise e
           end
         end
 
