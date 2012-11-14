@@ -30,7 +30,7 @@ ActionMailer::Base#deliverでを実際のメール送信ではなくジョブキ
 
 Gemfile
 
-    gem 'queued_mail', '~> 0.2.5'
+    gem 'queued_mail', '~> 0.2.6'
 
     bundle install
 
@@ -91,6 +91,14 @@ Gemfile
 (3) config/application.rb等でキューとしてAmazonSQSを使うことを設定する
       config.mail_queue_service = :amazon_sqs
       config.mail_queue_name = '1で作成したキューの名前'
+
+
+== メール取りだしのリトライ設定
+
+DBのコミット前にキューを取得してしまった場合など、ジョブ実行の段階でメッセージを取得できない可能性に対処するため、指定回数までメールの取得を試みるようにしました。
+
+    config.mail_queue_retry_limit = 3 # 3回まで再試行する（最初の1回+再試行3回）
+    config.mail_queue_retry_interval = 5 # 5秒後に再試行
 
 
 == TODO

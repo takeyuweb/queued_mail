@@ -11,5 +11,7 @@ module QueuedMail
     config.mail_queue_name = :mail_queue
     config.mail_queue_outbound_delivery_method = :sendmail
     config.mail_queue_outbound_mailer = 'QueuedMail::Mailer'
+    config.mail_queue_retry_interval = 5
+    config.mail_queue_retry_limit = 3
   end
 end
