@@ -21,9 +21,9 @@ ActionMailer::Base#deliverでを実際のメール送信ではなくジョブキ
 
 == 環境
 
-- Ruby 1.9.3
-- Ruby on Rails 3.2.8
-- mail 2.4.4
+- Ruby 1.9.3 or later
+- Ruby on Rails 3.2.8 or later
+- mail 2.4.4 or later
 
 
 == インストール
