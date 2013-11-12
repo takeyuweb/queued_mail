@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(:version => 20121031094220) do
 
   create_table "queued_mail_messages", :force => true do |t|
-    t.binary   "source",        :limit => 31457280
+    t.binary   "source",        :limit => 2147483647
     t.string   "bcc_addresses"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
 end

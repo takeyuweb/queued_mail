@@ -5,7 +5,7 @@ module QueuedMail
     def self.perform(args)
       retried = 0
       begin
-        message = QueuedMail::Message.lock.find(args["message_id"].to_i)
+        message = QueuedMail::Message.find(args["message_id"].to_i)
       rescue ActiveRecord::RecordNotFound => e
         if retried < retry_limit
           retried += 1
@@ -16,8 +16,10 @@ module QueuedMail
         end
       end
       
-      mailer.original_email(message).deliver
-      message.destroy
+      message.with_lock do
+        mailer.original_email(message).deliver
+        message.destroy
+      end
     rescue ActiveRecord::RecordNotFound => e
       Rails.logger.error e.message
       # nothing raises
