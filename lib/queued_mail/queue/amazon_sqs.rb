@@ -8,6 +8,7 @@ module QueuedMail
             Rails.logger.info "send message_id:#{sent_message.message_id} md5:#{sent_message.md5} (id:#{message_id})"
           rescue => e
             Rails.logger.error e
+            raise e
           end
         end
         
